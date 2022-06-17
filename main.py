@@ -1,19 +1,24 @@
-import speedtest
+import speedtest # MUST BE THE speedtest-cli module. NOT THE speedtest module
 s = speedtest.Speedtest()
+
+def b_mb(b):
+  megabytes=b/1024/1024
+  return round(megabytes,2)
 
 print("Test Download Speed...")
 
-download_result = s.download()/1025/1024
+download_result = b_mb(s.download())
 print(f"Your download speed is:{download_result}mbit/s")
 
 print("Test Upload Speed...")
 
-upload_result = s.upload()/1024/1024
+upload_result = b_mb(s.upload())
 print(f"Your upload speed is:{upload_result}mbit/s")
 
 print("Test Ping Test...")
 
-ping_result = s.result.ping
-print(f"Your ping is:{ping_result}ms")
 
-print(s.result)
+s.get_servers([])
+print("Ping :", s.results.ping)
+
+print(s.results)
