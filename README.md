@@ -30,14 +30,14 @@ WantedBy=multi-user.target
 
 `4.` Run `systemctl enable speedtest_exporter` and `systemctl start speedtest_exporter` to start on boot, and then start speedtest-exporter now.
 
-`5.` Go to http://<Server-ip>:9394/metrics to view your speedtest stats. You can import this into Prometheus via the following config snippet:
+`5.` Go to http://server ip:9394/metrics to view your speedtest stats. You can import this into Prometheus via the following config snippet:
   
   ```
   - job_name: speedtest_export
     scrape_interval: 2m
     scrape_timeout: 50s
     static_configs:
-      - targets: ["10.0.0.33:9394"]
+      - targets: ["server ip:9394"]
   ```
   
   You want to keep the scrape interval high, and timeout high. The test may take a minute to run, so you do not want to overload it and then have them building up.
