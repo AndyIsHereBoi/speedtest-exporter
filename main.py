@@ -46,19 +46,15 @@ def runTest():
     s.upload()
     result = str(s.results)
 
-    #try:
-    #data = json.dumps(s.results)
-    #data = json.loads(data)
-    #print(data[0])
-    #print(type(data))
-    actual_ping = str(round(int(s.results.ping),2))
-    download = b_mb(int(s.results.download))
-    upload = b_mb(int(s.results.upload))
-    return (actual_ping, download, upload)
-"""    except Exception as e:
+    try:
+        actual_ping = str(round(int(s.results.ping),2))
+        download = b_mb(int(s.results.download))
+        upload = b_mb(int(s.results.upload))
+        return (actual_ping, download, upload)
+    except Exception as e:
         import traceback
         print(e, traceback.format_exc())
-        return (0, 0, 0)"""
+        return (0, 0, 0)
 
 @app.route("/metrics")
 def updateResults():
@@ -77,7 +73,7 @@ def updateResults():
 
 @app.route("/")
 def mainPage():
-    return ("<h1>Welcome to Speedtest-Exporter.</h1> Click <a href='/metrics'>here</a> to see metrics.")
+    return ("Visit /metrics to view metrics.")
 
 
 print(f"Starting Speedtest-Exporter on http://localhost:{PORT}")
