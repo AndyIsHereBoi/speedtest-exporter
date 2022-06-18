@@ -8,7 +8,9 @@ It will work on anything that can run python 3.6+
 
 `2.` Copy the main.py and the requirements.txt file into `/etc/speedtest_exporter`
 
-`3.` Make a service file for your file to keep it online, and start on boot
+`3.` Install the required modules by running `pip install -r /etc/speedtest_exporter/requirements.txt`
+
+`4.` Make a service file for your file to keep it online, and start on boot
 
 run `nano /etc/systemd/system/speedtest_exporter.service` and paste the following below:
 
@@ -28,9 +30,9 @@ ExecStart=python3 /etc/speedtest_exporter/main.py
 WantedBy=multi-user.target
 ```
 
-`4.` Run `systemctl enable speedtest_exporter` and `systemctl start speedtest_exporter` to start on boot, and then start speedtest-exporter now.
+`5.` Run `systemctl enable speedtest_exporter` and `systemctl start speedtest_exporter` to start on boot, and then start speedtest-exporter now.
 
-`5.` Go to http://server_ip:9394/metrics to view your speedtest stats. You can import this into Prometheus via the following config snippet:
+`6.` Go to http://server_ip:9394/metrics to view your speedtest stats. You can import this into Prometheus via the following config snippet:
   
   ```
   - job_name: speedtest_export
