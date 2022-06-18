@@ -1,4 +1,4 @@
-# speedtest-exporter
+# Speedtest-exporter
 
 This module exports data from speedtest.net, and sends it out to a endpoint for Prometheus to grab.
 It will work on anything that can run python 3.6+
@@ -30,7 +30,7 @@ WantedBy=multi-user.target
 
 `4.` Run `systemctl enable speedtest_exporter` and `systemctl start speedtest_exporter` to start on boot, and then start speedtest-exporter now.
 
-`5.` Go to http://server ip:9394/metrics to view your speedtest stats. You can import this into Prometheus via the following config snippet:
+`5.` Go to <http://server> ip:9394/metrics to view your speedtest stats. You can import this into Prometheus via the following config snippet:
   
   ```
   - job_name: speedtest_export
